@@ -34,10 +34,7 @@ function Home() {
     setItems(queriedItems);
   };
 
-  const debounceFn = useCallback(_.debounce(handleDebounceFn, 1000), [
-    handleDebounceFn,
-    _.debounce,
-  ]);
+  const debounceFn = useCallback(_.debounce(handleDebounceFn, 1000), []);
 
   const handleChange = (e: any) => {
     setInput(e.target.value);
