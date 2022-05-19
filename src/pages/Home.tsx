@@ -1,6 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
 import { nanoid } from "nanoid";
-import { Box, Container, Stack, Input, Select } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Stack,
+  Input,
+  Select,
+  IconButton,
+  Icon,
+} from "@chakra-ui/react";
 import { ArrowUpIcon, ArrowDownIcon } from "@chakra-ui/icons";
 import _ from "lodash";
 import APIController from "../api/APIController";
@@ -104,7 +112,6 @@ function Home() {
             <Box
               onClick={handlePriceOrder}
               as="button"
-              justifyItems="flex-start"
               borderRadius="md"
               borderWidth="1px"
               color="white"
@@ -114,9 +121,9 @@ function Home() {
             >
               Price
               {priceOrder === "ASC" ? (
-                <ArrowUpIcon boxSize="1.2em" />
+                <ArrowUpIcon boxSize="1.2em" ml="2" mb="0.5" />
               ) : (
-                <ArrowDownIcon boxSize="1.2em" />
+                <ArrowDownIcon boxSize="1.2em" ml="2" mb="0.5" />
               )}
             </Box>
           </Stack>
