@@ -4,20 +4,15 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { createContext, useMemo } from "react";
+import { AppContextInterface } from "../interfaces/index";
 
-interface AppContextInterface {
-  colorMode: string;
-  primaryTextColor: string;
-  toggleColorMode(): any;
-}
+const AppContext = createContext<AppContextInterface<Function> | null>(null);
 
-interface ChildrenInterface {
+type ChildrenType = {
   children: JSX.Element;
-}
+};
 
-const AppContext = createContext<AppContextInterface | null>(null);
-
-export function AppProvider({ children }: ChildrenInterface) {
+export function AppProvider({ children }: ChildrenType) {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const primaryTextColor = useColorModeValue(
@@ -25,6 +20,7 @@ export function AppProvider({ children }: ChildrenInterface) {
     base.colors.gray[300],
   );
 
+  // memoize variables to avoid needless re-renders
   const value = useMemo(
     () => ({
       colorMode,
